@@ -1,17 +1,14 @@
 <?php
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 if (isset($_POST['target']) && isset($_POST['guess']))
 {
     $numberTarget = $_POST['target'];
-    $numberGuessed = $_POST['target'];
+    $numberGuessed = $_POST['guess'];
 
-    if ($numberGuessed <= $numberTarget)
+    if ($numberGuessed < $numberTarget)
     {
         $message = "Guess Higher";
-    } elseif ($numberGuessed >= $numberTarget)
+    } elseif ($numberGuessed > $numberTarget)
     {
         $message = "Guess Lower";
     } elseif ($numberGuessed == $numberTarget)
@@ -33,9 +30,9 @@ else
 <h1>
     <?php print $message ?>
 </h1>
-<form action="<?php $_SERVER['PHP_SELF'] ?>"  method="post" name="guessinggame">
+<form action="<?php $_SERVER['PHP_SELF'] ?>"  >
     <p>Number:
-        <input name="guess" type="text">
+        <input name="guess" type="text" >
     </p>
     <p>
         <input type="hidden" name="target" value="<?php echo $numberTarget ?>">
