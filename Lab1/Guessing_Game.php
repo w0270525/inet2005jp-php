@@ -6,12 +6,12 @@
 if (isset($_POST['target']) && isset($_POST['guess']))
 {
 	$numberTarget = $_POST['target'];
-	$numberGuessed = $_POST['target'];
+	$numberGuessed = $_POST['guess'];//changed post value from target to guest.
 
-	if ($numberGuessed <= $numberTarget)
+	if ($numberGuessed < $numberTarget)//removed equals sign
 	{
 		$message = "Guess Higher";
-	} elseif ($numberGuessed >= $numberTarget)
+	} elseif ($numberGuessed > $numberTarget)//removed equals sign
 	{
 		$message = "Guess Lower";
 	} elseif ($numberGuessed == $numberTarget)
