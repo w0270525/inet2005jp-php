@@ -10,21 +10,21 @@
 			$poundsResult = 0;
 			$kilosResult = 0;
 		
-		    if (isset($_POST['ConverttoPounds']))
+		    if (!isset($_POST['ConverttoPounds']))//added ! to !isset
 		    {
 		        $kilosResult = $_POST['kilos'];
 		        
 		        $poundsResult = $kilosResult * 2.2;
 		        
-		        echo "<p>" + $kilosResult + " kilos equals " + $poundResult + " pounds.</p>";
+		        echo "<p>" . $kilosResult . " kilos equals " . $poundsResult . " pounds.</p>";//changed concatination operator.
 		    }
 		    elseif (!isset($_POST['ConverttoKilos']))
 		    {
-		    	$poundsResult = $_POST['pound'];
+		    	$poundsResult = $_POST['pounds'];//changed pound to pounds
 		    
 		    	$kilosResult = $poundsResult / 2.2;
 		    	
-		    	echo "<p>" + $poundsResult + " pounds equals " + $kilosResult + " kilos.</p>";
+		    	echo "<p>" . $poundsResult . " pounds equals " . $kilosResult . " kilos.</p>";//changed concatination operator.
 		    }
 		    else
 		    {
