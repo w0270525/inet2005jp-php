@@ -79,6 +79,7 @@ echo $stringVariable;
 $ageVariable=32;
 
 function shoutYourAge(){
+	//using global variable to allow access to the variable while in
 	global $ageVariable;
 	echo "<h1>OMG you are ".$ageVariable." years old!";
 }
