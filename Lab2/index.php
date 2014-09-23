@@ -35,16 +35,59 @@ function thatCrazyFunction($inputtedString) {
 
 
 //needs to be made in a loop.
-thatCrazyFunction("1");
-thatCrazyFunction("2");
-thatCrazyFunction("3");
-thatCrazyFunction("4");
-thatCrazyFunction("5");
-thatCrazyFunction("6");
-thatCrazyFunction("7");
+for($i =1;$i < 8; $i++) {
+thatCrazyFunction($i);
 
+}
 
 ?>
+
+<hr />
+
+<?php //Part 2
+
+function byValue($blahVariable) {
+	$blahVariable=$blahVariable."...blah";
+
+	echo $blahVariable;
+}
+function byReference(&$blahVariable) {
+	$blahVariable=$blahVariable."...blah";
+
+	echo $blahVariable;
+}
+
+$stringVariable="Hello, World!";
+
+echo $stringVariable;
+?><p><?php
+echo byValue($stringVariable);
+?></p><p><?php
+echo $stringVariable;
+?></p>
+<p><?php
+echo byReference($stringVariable);
+?></p>
+
+<p><?php
+echo $stringVariable;
+	?></p>
+
+<br />
+
+<?php //Part 3 Global functions
+$ageVariable=32;
+
+function shoutYourAge(){
+	global $ageVariable;
+	echo "<h1>OMG you are ".$ageVariable." years old!";
+}
+
+shoutYourAge();
+?>
+
+
+
 
 </body>
 </html>
