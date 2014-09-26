@@ -1,4 +1,4 @@
-lfunction checkForm()
+function checkForm()
 {		
 	if(document.forms["myForm"].firstName.value.length ==0)		
 	{			
