@@ -5,17 +5,23 @@
 </head>
 <body>
 
-<table>
-<?php
+<table border="1px">
 
-$celsius;
-for ($fahrenheit =0; $fahrenheit <=100; $fahrenheit++) {
-	$celsius = ($fahrenheit - 32) * (5/9);
-	$celsius = round($celsius,0);?>
+<tr>
+	<th>Fahrenheit</th>
+	<th>Celsius</th>
+</tr>
+	<?php
 
-<p>
-<?php echo $fahrenheit; ?> degree(s) fahrenheit equals <?php echo $celsius; ?> degrees Celsius.
-	</p>
+	$celsius;
+	for ($fahrenheit =0; $fahrenheit <=100; $fahrenheit++) {
+		$celsius = ($fahrenheit - 32) * (5/9);
+		$celsius = round($celsius,0);?>
+<tr>
+	<?php echo "<td>".$fahrenheit."</td>" ?> <?php echo "<td>". $celsius."</td>"; ?>
+</tr>
+
+
 <?php } ?>
 </table>
 </body>
