@@ -8,8 +8,8 @@
 <table border="1px">
 
 <tr>
-	<th>Fahrenheit</th>
 	<th>Celsius</th>
+	<th>Fahrenheit</th>
 </tr>
 	<?php
 
