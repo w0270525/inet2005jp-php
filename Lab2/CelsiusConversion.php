@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<link rel="stylesheet" type="text/css" href="myStyle.css">
+	<title>Celsius Conversion</title>
 </head>
 <body>
 
@@ -14,11 +15,11 @@
 	<?php
 
 
-	for ($fahrenheit =0; $fahrenheit <=100; $fahrenheit++) {
-		$celsius = ($fahrenheit - 32) * (5/9);
-		$celsius = round($celsius,0);?>
+	for ($celsius =0; $celsius <=100; $celsius++) {
+		$fahrenheit = ($celsius *(9/5))+32;
+		$fahrenheit = round($fahrenheit,0);?>
 <tr>
-	<?php echo "<td>".$fahrenheit."</td>" ?> <?php echo "<td>". $celsius."</td>"; ?>
+	<?php echo "<td>".$celsius."</td>" ?> <?php echo "<td>". $fahrenheit."</td>"; ?>
 </tr>
 
 

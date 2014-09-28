@@ -13,7 +13,6 @@
 </tr>
 	<?php
 
-
 	for ($fahrenheit =0; $fahrenheit <=100; $fahrenheit++) {
 		$celsius = ($fahrenheit - 32) * (5/9);
 		$celsius = round($celsius,0);?>
