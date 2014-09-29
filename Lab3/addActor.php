@@ -35,13 +35,13 @@ while ($row = mysqli_fetch_assoc($actors))
 <?php
 }//end while.
 ?>
+</table>
 
-
-<form name="delete" method="post" action="remove.php"></form>
+<form id="deleteId" name="deleteId" method="post" action="remove.php"></form>
 	<label>ID to Delete:</label>
-	<input type="text" name="delete" id="delete" />
+	<input type="text" name="delete_Id" id="delete_Id" />
 
-	<p><input type="submit" name="Delete" value="Send Form"/></p>
+	<p><input type="submit" name="submit" value="Delete"/></p>
 
 
 </form>
@@ -50,7 +50,7 @@ mysqli_close($db);
 
 ?>
 
-</table>
+
 
 </body>
 </html> 
