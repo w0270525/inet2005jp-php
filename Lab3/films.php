@@ -13,11 +13,12 @@
 		<th>Film</th><th>Description</th>
 	</tr>
 <?php
-$db = mysqli_connect("localhost","inet2005", "itCampus2014","sakila");
-if (!$db)
-{
-die('Could not connect to the Sakila Database: ' . mysqli_error($db));
-}
+
+
+        include("CentralDB.php");
+        $db = connectToDB();
+
+
 
 $result = mysqli_query($db,"SELECT * FROM film LIMIT 0,10");
 
