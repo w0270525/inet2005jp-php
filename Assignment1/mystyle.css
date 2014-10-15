@@ -1,0 +1,13 @@
+#edit {
+    background:url(pencil.png);
+    background-position:0 0;
+    height:20px;
+    width:20px;}
+
+#delete {
+    background:url(delete.png);
+    background-position: 0 0;
+    height: 20px;
+    width: 20px;
+
+}

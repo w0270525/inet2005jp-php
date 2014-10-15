@@ -46,6 +46,8 @@
 				<td><?php echo $row['last_name']; ?></td>
 				<td><?php echo $row['gender']; ?></td>
 				<td><?php echo $row['hire_date']; ?></td>
+				<td><?php echo '<span id="edit"></span>' ?></td>
+				<td><?php echo '<span id="delete"></span>' ?></td>
 			</tr>
 
 			<?php }//end while. ?>
