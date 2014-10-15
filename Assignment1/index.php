@@ -2,8 +2,10 @@
 <html>
 	<head>
   		<title>Assignment 1</title>
-		<script></script>
+		<script>
 
+		</script>
+		<link rel="stylesheet" type="text/css" href="mystyle.css">
 	</head>
 	<body>
 		<?php
@@ -49,7 +51,7 @@
 			<?php }//end while. ?>
 
 
-
+	</table>
 
 
 			<?php
