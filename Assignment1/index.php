@@ -14,8 +14,8 @@
 		$db = connectToDB();
 
 		?>
-		<?php
-		 ?>
+
+
 		<h1>Search First and Last Names from Database</h1>
 		<form id="employee_query" method="post"  onsubmit="" >
 			<input name="emp_query" type="text">
