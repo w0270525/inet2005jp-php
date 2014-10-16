@@ -3,8 +3,8 @@
 function checkifloggedin() {
 
 	session_start();
-	if(empty($_SESSION['myusername']) ||empty($_SESSION['mypassword'])){
-		header('login.php');
+	if(empty($_SESSION['myusername']) || empty($_SESSION['mypassword'])){
+		header('location:login.php');
 	}
 }
 

@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
 <?php
- ?>
 
-</body>
-</html> 
+	session_start();
+	session_destroy();
+	header("location:login.php");
+
+
+?>

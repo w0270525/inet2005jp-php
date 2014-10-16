@@ -9,8 +9,10 @@ $db_name="employees"; // Database name
 $tbl_name="members"; // Table name
 
 // Connect to server and select databse.
-mysql_connect("localhost","inet2005", "itCampus2014","employees");
-mysql_select_db("$db_name")or die("cannot select DB");
+$db=mysqli_connect("localhost","inet2005", "itCampus2014","employees");
+if(!$db) {
+	die("cannot select DB");
+}
 
 // Define $myusername and $mypassword
 $myusername=$_POST['myusername'];
@@ -19,13 +21,13 @@ $mypassword=$_POST['mypassword'];
 // To protect MySQL injection (more detail about MySQL injection)
 $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
-$myusername = mysql_real_escape_string($myusername);
-$mypassword = mysql_real_escape_string($mypassword);
+$myusername = mysqli_real_escape_string($db, $myusername);
+$mypassword = mysqli_real_escape_string($db, $mypassword);
 $sql="SELECT * FROM $tbl_name WHERE username='$myusername' and user_password='$mypassword'";
-$result=mysql_query($sql);
+$result=mysqli_query($db,$sql);
 
 // Mysql_num_row is counting table row
-$count=mysql_num_rows($result);
+$count=mysqli_num_rows($result);
 
 // If result matched $myusername and $mypassword, table row must be 1 row
 if($count==1){
@@ -35,9 +37,12 @@ if($count==1){
 	$_SESSION["mypassword"]=$mypassword;
 	header("location:index.php");
 }else {
-	echo "Wrong Username or Password";
-	echo "<a href='login.php'>Return to Login</a>";
+	echo "<p>Wrong Username or Password</p>";
+	echo "<p><a href='login.php'>Return to Login</a></p>";
 
 }
-ob_end_flush();
+
+			//to close database connection.
+			mysqli_close($db);
+
 ?>
