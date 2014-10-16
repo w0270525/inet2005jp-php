@@ -24,7 +24,7 @@
 /* resize images */
 .edit img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .delete {
@@ -40,5 +40,5 @@
 /* resize images */
 .delete img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }

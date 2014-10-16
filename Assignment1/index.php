@@ -62,18 +62,18 @@ $queryresult=mysqli_query($db, 'SELECT * FROM employees.employees where (last_na
 </form>
 
 
-<form id="nav" method="post"  onsubmit="index.php" >
+
 		<?php if($currentnumber!=0){
 
-			echo  '<input type="submit" name="prev" id="prev" value="Prev">';
+			echo  '<a href="index.php?movement_by=-25" >Prev</a>';
 		}
 		?>
 
-<?php if ($count>= $currentnumber+25)
-echo '<input type="submit" name="next" id="next" value="Next">';
+<?php if ($currentnumber< $count - 25)
+ echo  '<a href="index.php?movement_by=25" >Prev</a>';
 ?>
 
-</form>
+
 
 <form id="addemployee" method="post" onsubmit="addemployee.php">
 

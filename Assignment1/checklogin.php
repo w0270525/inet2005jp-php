@@ -23,7 +23,11 @@ $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
 $myusername = mysqli_real_escape_string($db, $myusername);
 $mypassword = mysqli_real_escape_string($db, $mypassword);
-$sql="SELECT * FROM $tbl_name WHERE username='$myusername' and user_password='$mypassword'";
+
+
+$hashedpwd = hash("sha1", $mypassword);
+
+$sql="SELECT * FROM $tbl_name WHERE username='$myusername' and user_password='$hashedpwd'";
 $result=mysqli_query($db,$sql);
 
 // Mysql_num_row is counting table row
