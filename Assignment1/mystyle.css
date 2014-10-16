@@ -11,3 +11,34 @@
     width: 20px;
 
 }
+.edit {
+    min-height: 20px;
+    max-width: 20px;
+    min-width: 20px;
+    display:inline;
+    background:url(pencil.png);
+    border-style:dashed;
+    border-width: 1px;
+    float:left;
+}
+/* resize images */
+.edit img {
+    width: 100%;
+    height: 100%;
+}
+
+.delete {
+    min-height: 20px;
+    max-width: 20px;
+    min-width: 20px;
+    display:inline;
+    background-image:url(delete.png);
+    border-style:dashed;
+    border-width: 1px;
+    float:left;
+}
+/* resize images */
+.delete img {
+    width: 100%;
+    height: 100%;
+}
