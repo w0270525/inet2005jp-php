@@ -28,6 +28,11 @@ checkifloggedin(); //ensures outsider links won't gain access without logging in
 				return false;
 			}
 			else if isValidDate(document.getElementById('hire_date'))
+			{
+				document.getElementById("hdate").innerHTML="The date is not in the correct format"
+				return false;
+
+			}else
 
 				return true;
 			}
@@ -40,7 +45,7 @@ checkifloggedin(); //ensures outsider links won't gain access without logging in
 include("CentralDB.php");
 $db = connectToDB();
  ?>
-<form id="addEmp" name="addEmp" action="addaction.php" onsubmit="checkForm()">
+<form id="addEmp" name="addEmp" method="post" action="addaction.php" onsubmit="checkForm()">
 	<p>Birth Day in YYYY-MM-DD format:<input type="date" id="birth_date" ></p><span id="bday"></span>
 	<p>First Name:<input type="text" id="first_name"></p><span id="fname"></span>
 	<p>Last Name:<input type="text" id="last_name"></p><span id="lname"></span>
@@ -51,6 +56,8 @@ $db = connectToDB();
 	</select><span id="gder"></span>
 	</p>
 	<p>Hire date in YYYY-MM-DD format:<input type="date" id="hire_date" ></p><span id="hday"></span>
+
+	<input type="submit" id="submit" name="submit" value="Submit">
 </form>
 
 

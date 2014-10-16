@@ -38,9 +38,9 @@ else {
 
 
 if(isset($_SESSION['query'])){
-$querytotal==mysqli_query($db, 'SELECT * FROM employees.employees where (last_name LIKE "%'.$query.'%") or (first_name like "%'.$query.'%")');
+$querytotal=mysqli_query($db, 'SELECT * FROM employees.employees where (last_name LIKE "%'.$query.'%") or (first_name like "%'.$query.'%")');
 while ($count= mysqli_fetch_assoc($querytotal)) {
-	$count+=1;
+	$count++;
 	$_SESSION['count']=$count;
 }
 
