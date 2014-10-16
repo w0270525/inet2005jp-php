@@ -1,3 +1,8 @@
+<?php
+require 'isloggedin.php';
+checkifloggedin();
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
