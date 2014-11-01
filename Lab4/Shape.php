@@ -14,9 +14,6 @@ abstract class Shape {
 		$this->name=$in_name;
 	}
 
+	abstract public function CalculateSize();
 
-
-	abstract public function calculateArea();
-
-
-} 
+}
