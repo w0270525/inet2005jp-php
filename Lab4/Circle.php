@@ -13,7 +13,8 @@ class Circle extends Shape{
 	private $area;
 	private $pi = 3.14159265359;
 
-	public function __construct($in_radius){
+	public function __construct($in_name,$in_radius){
+		parent::__construct( $in_name);
 
 		$this->$radius=$in_radius;
 

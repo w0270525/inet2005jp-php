@@ -9,10 +9,13 @@ require_once("Shape.php");
 require_once("Rectangle.php");
 require_once("Circle.php");
 require_once("Triangle.php");
+
+
+
 ?>
 
 
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" style="width: 500px;"method="post" action="">
 	<fieldset>
 		<legend>Circle</legend>
 		<p>
@@ -49,7 +52,15 @@ require_once("Triangle.php");
 	<input name="Calculate" type="submit" value="Calculate" />
 </form>
 <p>Results:</p>
-<p></p>
+<?php
+
+$cir=new Circle();
+$rect=new Rectangle()
+$rect=new Triangle()
+
+?>
+
+<p>Shape: Circle</p>
 
 
 
