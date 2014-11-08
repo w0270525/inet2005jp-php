@@ -16,8 +16,8 @@ class Rectangle extends Shape {
 	public function __construct($in_name,$in_base,$in_height){
 		parent::__construct( $in_name);
 
-		$this->$base=$in_base;
-		$this->$height=$in_height;
+		$this->base=$in_base;
+		$this->height=$in_height;
 
 
 	}

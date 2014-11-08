@@ -15,7 +15,7 @@ require_once("Triangle.php");
 ?>
 
 
-<form id="form1" name="form1" style="width: 500px;"method="post" action="">
+<form id="form1" name="form1" style="width: 500px;" method="post" action="index.php">
 	<fieldset>
 		<legend>Circle</legend>
 		<p>
@@ -54,15 +54,26 @@ require_once("Triangle.php");
 <p>Results:</p>
 <?php
 
-$cir=new Circle();
-$rect=new Rectangle()
-$rect=new Triangle()
+if (isset($_POST["Radius"])){
+$cir=new Circle("Circle", $_POST["Radius"]);
+	echo "<p><b>Shape: Circle</b></p>";
+	echo "<p>Area: " .$cir->CalculateSize(). "</p>";
+}
 
+if (isset($_POST["rectLength"])){
+$rect=new Rectangle("Rectangle", $_POST["rectLength"], $_POST["rectWidth"]);
+
+echo "<p><b>Shape: Rectangle</b></p>";
+echo "<p>Area: " .$rect->CalculateSize()."</p>";
+}
+
+if(isset($_POST["triBase"])){
+$tri=new Triangle("Triangle", $_POST['triBase'], $_POST['triHeight']);
+	echo "<p><b>Shape: Triangle</b></p>";
+	echo "<p>Area: " .$tri->CalculateSize()."</p>";
+
+}
 ?>
-
-<p>Shape: Circle</p>
-
-
 
 </body>
 </html> 

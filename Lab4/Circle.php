@@ -16,7 +16,7 @@ class Circle extends Shape{
 	public function __construct($in_name,$in_radius){
 		parent::__construct( $in_name);
 
-		$this->$radius=$in_radius;
+		$this->radius=$in_radius;
 
 	}
 
