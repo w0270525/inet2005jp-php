@@ -7,10 +7,12 @@
  */
 
 require_once("Shape.php");
-class Triangle extends Shape{
+class Triangle extends Shape implements iResizable
+{
 	private $base;
 	private $height;
 	private $area;
+	private $modifier;
 
 	public function __construct($in_name,$in_base,$in_height){
 		parent::__construct( $in_name);
@@ -23,5 +25,15 @@ class Triangle extends Shape{
 	{
 		$this->area=($this->base * $this->height)/2;
 		return $this->area;
+	}
+
+	public function resize($in_modifier)
+	{
+		$this->modifier=$in_modifier;
+
+
+		$this->area=(($this->base*$this->modifier) * $this->height)/2;
+		return $this->area;
+
 	}
 }

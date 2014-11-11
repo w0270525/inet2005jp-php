@@ -23,6 +23,12 @@ require_once("Triangle.php");
 				<input type="text" name="Radius" id="Radius" />
 			</label>
 		</p>
+		<p>
+			<label>
+				Resizeable
+				<input type="text" name="resize" id="circleResize" />
+			</label>
+		</p>
 	</fieldset>
 	<fieldset>
 		<legend>Rectangle</legend>
@@ -47,6 +53,12 @@ require_once("Triangle.php");
 			<label>Height
 				<input type="text" name="triHeight" id="triHeight" />
 			</label>
+		<p>
+			<label>
+				Resizeable
+				<input type="text" name="resize" id="triResize" />
+			</label>
+		</p>
 		</p>
 	</fieldset>
 	<input name="Calculate" type="submit" value="Calculate" />
@@ -58,6 +70,8 @@ if (isset($_POST["Radius"])){
 $cir=new Circle("Circle", $_POST["Radius"]);
 	echo "<p><b>Shape: Circle</b></p>";
 	echo "<p>Area: " .$cir->CalculateSize(). "</p>";
+	echo "<p>Re-sized area: ".$cir->resize($_POST["circleResize"])."</p>";
+
 }
 
 if (isset($_POST["rectLength"])){
@@ -71,6 +85,7 @@ if(isset($_POST["triBase"])){
 $tri=new Triangle("Triangle", $_POST['triBase'], $_POST['triHeight']);
 	echo "<p><b>Shape: Triangle</b></p>";
 	echo "<p>Area: " .$tri->CalculateSize()."</p>";
+	echo "<p>Re-sized area: ".$cir->resize($_POST["triResize"])."</p>";
 
 }
 ?>

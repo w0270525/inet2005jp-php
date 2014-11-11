@@ -7,11 +7,14 @@
  */
 
 require_once("Shape.php");
-class Circle extends Shape{
+require_once("iResizable.php");
+
+class Circle extends Shape implements iResizable {
 
 	private $radius;
 	private $area;
 	private $pi = 3.14159265359;
+	private $modifier;
 
 	public function __construct($in_name,$in_radius){
 		parent::__construct( $in_name);
@@ -25,4 +28,13 @@ class Circle extends Shape{
 		$this->area=($this->radius*$this->radius)*$this->pi;
 		return $this->area;
 	}
+
+	public function resize($in_modifier)
+	{
+		$this->modifier=$in_modifier;
+		$this->area=($this->radius*$this->radius)*$this->pi;
+		$this->area= $this->area * $this->modifier;
+		return $this->area;
+	}
+
 }
