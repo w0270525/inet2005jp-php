@@ -33,7 +33,7 @@ class Circle extends Shape implements iResizable {
 	{
 		$this->modifier=$in_modifier;
 		$this->area=($this->radius*$this->radius)*$this->pi;
-		$this->area= $this->area * $this->modifier;
+		$this->area *= $this->modifier;
 		return $this->area;
 	}
 

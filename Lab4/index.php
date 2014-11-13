@@ -59,11 +59,12 @@ require_once("Triangle.php");
 				<input type="text" name="resize" id="triResize" />
 			</label>
 		</p>
-		</p>
+
 	</fieldset>
 	<input name="Calculate" type="submit" value="Calculate" />
 </form>
 <p>Results:</p>
+
 <?php
 
 if (isset($_POST["Radius"])){
@@ -85,7 +86,7 @@ if(isset($_POST["triBase"])){
 $tri=new Triangle("Triangle", $_POST['triBase'], $_POST['triHeight']);
 	echo "<p><b>Shape: Triangle</b></p>";
 	echo "<p>Area: " .$tri->CalculateSize()."</p>";
-	echo "<p>Re-sized area: ".$cir->resize($_POST["triResize"])."</p>";
+	echo "<p>Re-sized area: ".$tri->resize($_POST["triResize"])."</p>";
 
 }
 ?>

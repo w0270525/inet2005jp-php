@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="ajax.js"></script>
+    <script type="text/javascript" src="ajaxFilmLookup.js"></script>
+	  <script>
+		  $(function() {
+			  $( document ).tooltip();
+		  });
+	  </script>
+	  <style>
+		  label {
+			  display: inline-block;
+			  width: 5em;
+		  }
+	  </style>
+  </head>
+  <body>
+    <form action="" name="searchForm">
+            <p>Search:
+                <input type="text" name="searchExpr" title="Type a name you want to search for." onkeyup="showMatches(this.value);"/>
+            </p>
+            <p>Suggestions:<br/>
+                <span id="TxtHint"></span>
+            </p>
+        </form>
+  </body>
+</html>

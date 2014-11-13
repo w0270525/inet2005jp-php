@@ -7,6 +7,8 @@
  */
 
 require_once("Shape.php");
+require_once("iResizable.php");
+
 class Triangle extends Shape implements iResizable
 {
 	private $base;
