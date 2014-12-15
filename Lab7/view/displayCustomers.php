@@ -26,11 +26,11 @@ and open the template in the editor.
         <?php
             endif;
         ?>
-        <h1>Current Customers:</h1>
+        <h1>Current Actors:</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Customer ID</th>
+                    <th>Actor ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Update</th>
