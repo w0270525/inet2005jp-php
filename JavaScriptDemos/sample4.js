@@ -1,6 +1,6 @@
 function checkForm()	
 {		
-	if(document.forms["myForm"].firstName.value.length ==0)		
+	if(document.forms["myForm"].firstName.length ==0)
 	{			
 		alert("You must enter a first name");			
 		return false;		
