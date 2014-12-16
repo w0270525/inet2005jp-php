@@ -70,9 +70,25 @@ class ActorModel
         $recordsAffected = $this->m_DataAccess->updateActor($actorToUpdate->getID(),
                 $actorToUpdate->getFirstName(),
                 $actorToUpdate->getLastName());
+
+	    $this->m_DataAccess->closeDB();
         
         return "$recordsAffected record(s) updated successfully!";
     }
+
+	public function deleteActor($actorToDelete)
+	{
+		try {
+			$this->m_DataAccess->connectToDB();
+
+			$recordToDelete = $this->m_DataAccess->deleteActor($actorToDelete);
+
+			$this->m_DataAccess->closeDB();
+		} catch (PDOException $e) {
+			die('error deleting record');
+		}
+		return "$recordToDelete record deleted successfully";
+	}
 }
 
 ?>

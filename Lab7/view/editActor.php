@@ -12,7 +12,7 @@ and open the template in the editor.
         <h1>Edit Actor:</h1>
         <form id="formUpdate" name="formUpdate" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">  
             <p>    
-		<label>Actorr ID:
+		<label>Actor ID:
                     <input type="text" 	readonly="readonly" name="editActorId" id="editActorId" value="<?php echo $currentActor->getID();?>"/>
                 </label>  
             </p>

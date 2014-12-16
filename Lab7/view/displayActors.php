@@ -2,11 +2,12 @@
 To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php require_once '../controller/ActorController.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customers</title>
+        <title>Sakila Actors</title>
         <style type="text/css">
             table
             {
@@ -34,6 +35,7 @@ and open the template in the editor.
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Update</th>
+	                <th>Delete</th>
 
                 </tr>
             </thead>
@@ -51,12 +53,19 @@ and open the template in the editor.
                                     <img src="/images/edit_icon.png" height="25px" width="25px"/>
                                 </a>
                             </td>
-
+	                        <td>
+	                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?idDelete=<?php echo $actor->getID(); ?>">
+		                        <img src="/images/delete_icon.png" height="25px" width="25px"/>
+	                        </a>
+							</td>
                         </tr>
                     <?php
                     endforeach;
                 ?>
+
+
             </tbody>
+	        <a href=<?php $ActorController->createActor() ?>>Create an Actor</a>
             <tfoot></tfoot>
         </table>  
     </body>

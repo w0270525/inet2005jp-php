@@ -41,6 +41,19 @@ class ActorController
         include '../view/displayActors.php';
     }
 
+	public function deleteAction($actorID)
+	{
+		$currentActor= $this->model->deleteActor($actorID);
+
+		include '../view/displayActors.php';
+
+	}
+
+	public function createActor()
+	{
+		include '../view/createActor.php';
+	}
+
 
 }
 
