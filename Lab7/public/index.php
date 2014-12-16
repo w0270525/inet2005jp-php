@@ -1,6 +1,6 @@
 <?php
 
-require_once '../controller/CustomerController.php';
+require_once '../controller/ActorController.php';
 
 $custController = new CustomerController();
 

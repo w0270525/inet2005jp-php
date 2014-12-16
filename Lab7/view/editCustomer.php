@@ -9,21 +9,21 @@ and open the template in the editor.
         <title>Customer Update</title>
     </head>
     <body>
-        <h1>Edit Customer:</h1>
+        <h1>Edit Actor:</h1>
         <form id="formUpdate" name="formUpdate" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">  
             <p>    
 		<label>Customer ID: 
-                    <input type="text" 	readonly="readonly" name="editCustId" id="editCustId" value="<?php echo $currentCustomer->getID();?>"/> 
+                    <input type="text" 	readonly="readonly" name="editActorId" id="editActorId" value="<?php echo $currentActor->getID();?>"/>
                 </label>  
             </p>
             <p>    
 		<label>First Name: 
-                    <input type="text" name="firstName" id="firstName" value="<?php echo $currentCustomer->getFirstName();?>"/> 
+                    <input type="text" name="firstName" id="firstName" value="<?php echo $currentActor->getFirstName();?>"/>
                 </label>  
             </p>  
             <p>    
 		<label>Last Name:
-                    <input type="text" name="lastName" id="lastName" value="<?php echo $currentCustomer->getLastName();?>"/>
+                    <input type="text" name="lastName" id="lastName" value="<?php echo $currentActor->getLastName();?>"/>
                 </label>  
             </p>  
             <p> 

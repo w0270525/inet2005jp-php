@@ -1,19 +1,19 @@
 <?php
 
-require_once '../model/Customer.php';
+require_once '../model/Actor.php';
 require_once '../model/Address.php';
 
 //require_once '../model/data/MySQLiCustomerDataModel.php';
-require_once '../model/data/PDOMySQLCustomerDataModel.php';
+require_once '../model/data/PDOMySQLSakila.php';
 
-class CustomerModel 
+class ActorModel
 {
     private $m_DataAccess;
     
     public function __construct()
     {
-        //$this->m_DataAccess = new MySQLiCustomerDataModel();
-        $this->m_DataAccess = new PDOMySQLCustomerDataModel();
+
+        $this->m_DataAccess = new PDOMySQLSakila();
     }
     
     public function __destruct()
@@ -21,67 +21,58 @@ class CustomerModel
         // not doing anything at the moment
     }
             
-    public function getAllCustomers()
+    public function getAllActors()
     {
         $this->m_DataAccess->connectToDB();
         
-        $arrayOfCustomerObjects = array();
+        $arrayOfActorObjects = array();
         
-        $this->m_DataAccess->selectCustomers();
+        $this->m_DataAccess->selectActors();
         
-        while($row =  $this->m_DataAccess->fetchCustomers())
+        while($row =  $this->m_DataAccess->fetchActors())
         {
-           $address = new Address(
-                    $this->m_DataAccess->fetchAddressID($row),
-                    $this->m_DataAccess->fetchAddress1($row),
-                    $this->m_DataAccess->fetchAddress2($row)
-                    );
-            $currentCustomer = new Customer($this->m_DataAccess->fetchCustomerID($row),
-                    $this->m_DataAccess->fetchCustomerFirstName($row),
-                    $this->m_DataAccess->fetchCustomerLastName($row),
-                    $address);
+
+            $currentActor = new Actor($this->m_DataAccess->fetchCustomerID($row),
+                    $this->m_DataAccess->fetchActorFirstName($row),
+                    $this->m_DataAccess->fetchActorLastName($row),
+	                $this->m_DataAccess->fetchLastUpdate($row));
             
-            $arrayOfCustomerObjects[] = $currentCustomer;
+            $arrayOfActorObjects[] = $currentActor;
         }
         
         $this->m_DataAccess->closeDB();
         
-        return $arrayOfCustomerObjects;
+        return $arrayOfActorObjects;
     }
     
-    public function getCustomer($custID)
+    public function getActor($ActorID)
     {
         $this->m_DataAccess->connectToDB();
         
-        $this->m_DataAccess->selectCustomerById($custID);
+        $this->m_DataAccess->selectActorById($ActorID);
         
-        $record =  $this->m_DataAccess->fetchCustomers();
+        $record =  $this->m_DataAccess->fetchActors();
         
-        
-        $address = new Address(
-                 $this->m_DataAccess->fetchAddressID($record),
-                 $this->m_DataAccess->fetchAddress1($record),
-                 $this->m_DataAccess->fetchAddress2($record)
-                 );
-         $fetchedCustomer = new Customer($this->m_DataAccess->fetchCustomerID($record),
+
+         $fetchedActor = new Actor($this->m_DataAccess->fetchActorID($record),
                  $this->m_DataAccess->fetchCustomerFirstName($record),
                  $this->m_DataAccess->fetchCustomerLastName($record),
-                 $address);
+                $this->m_DataAccess->fetchLastUpdate($record));
             
             
         
         $this->m_DataAccess->closeDB();
         
-        return $fetchedCustomer;
+        return $fetchedActor;
     }
     
-     public function updateCustomer($customerToUpdate)
+     public function updateActor($actorToUpdate)
     {
         $this->m_DataAccess->connectToDB();
         
-        $recordsAffected = $this->m_DataAccess->updateCustomer($customerToUpdate->getID(),
-                $customerToUpdate->getFirstName(),
-                $customerToUpdate->getLastName());
+        $recordsAffected = $this->m_DataAccess->updateActor($actorToUpdate->getID(),
+                $actorToUpdate->getFirstName(),
+                $actorToUpdate->getLastName());
         
         return "$recordsAffected record(s) updated succesfully!";
     }

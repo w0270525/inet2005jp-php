@@ -1,26 +1,27 @@
 <?php
 
-require_once('../model/Address.php');
 
-class Customer
+
+class Actor
 {
-    private $m_customerId;
+    private $m_actorId;
     private $m_firstName;
     private $m_lastName;
-    private $m_address;
+    private $m_lastModified;
+
+
     
-    
-    public function __construct($in_id,$in_fname,$in_lname,$in_address)
+    public function __construct($in_id,$in_fname,$in_lname, $in_lmodified)
     {
-        $this->m_customerId = $in_id;
+        $this->m_actorId = $in_id;
         $this->m_firstName = $in_fname;
         $this->m_lastName = $in_lname;
-        $this->m_address = $in_address;
+
     }
     
     public function getID()
     {
-        return ($this->m_customerId);
+        return ($this->m_actorId);
     }
     
     public function getFirstName()
@@ -42,11 +43,17 @@ class Customer
     {
         $this->m_lastName = $in_lastName;
     }
-    
-    public function getAddress()
-    {
-        return ($this->m_address);
-    }
+
+	public function setMLastModified($m_lastModified)
+	{
+		$this->m_lastModified = $m_lastModified;
+	}
+
+	public function getMLastModified()
+	{
+		return $this->m_lastModified;
+	}
+
 
 }
 

@@ -23,88 +23,88 @@ class PDOMySQLSakila implements iActorDataModel
 
 	public function closeDB() {
 
-	$this->dbConnection = null;
-}
+		$this->dbConnection = null;
+	}
 
 
 	public function selectActors()
-{
-	// hard-coding for first ten rows
-	$start = 0;
-	$count = 10;
-
-	$selectStatement = "SELECT * FROM sakila.actor";
-	$selectStatement .= " LIMIT :start,:count;";
-
-	try
 	{
-		$this->stmt = $this->dbConnection->prepare($selectStatement );
-		$this->stmt->bindParam(':start', $start, PDO::PARAM_INT);
-		$this->stmt->bindParam(':count', $count, PDO::PARAM_INT);
+		// hard-coding for first ten rows
+		$start = 0;
+		$count = 10;
 
-		$this->stmt->execute();
-	}
-	catch(PDOException $ex)
-	{
-		die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
-	}
+		$selectStatement = "SELECT * FROM sakila.actor";
+		$selectStatement .= " LIMIT :start,:count;";
 
-}
+		try
+		{
+			$this->stmt = $this->dbConnection->prepare($selectStatement );
+			$this->stmt->bindParam(':start', $start, PDO::PARAM_INT);
+			$this->stmt->bindParam(':count', $count, PDO::PARAM_INT);
+
+			$this->stmt->execute();
+		}
+		catch(PDOException $ex)
+		{
+			die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
+		}
+
+	}
 
 	public function selectActorById($actorID)
-{
-	$selectStatement = "SELECT * FROM sakila.actor WHERE actor_id = :actorID;";
-	$selectStatement .= " ";
-
-	try
 	{
-		$this->stmt = $this->dbConnection->prepare($selectStatement);
-		$this->stmt->bindParam(':actorID', $actorID, PDO::PARAM_INT);
+		$selectStatement = "SELECT * FROM sakila.actor WHERE actor_id = :actorID;";
+		$selectStatement .= " ";
 
-		$this->stmt->execute();
+		try
+		{
+			$this->stmt = $this->dbConnection->prepare($selectStatement);
+			$this->stmt->bindParam(':actorID', $actorID, PDO::PARAM_INT);
+
+			$this->stmt->execute();
+		}
+		catch(PDOException $ex)
+		{
+			die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
+		}
 	}
-	catch(PDOException $ex)
-	{
-		die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
-	}
-}
 
 
 	public function fetchActors()
-{
-	try
 	{
-		$this->result = $this->stmt->fetch(PDO::FETCH_ASSOC);
-		return $this->result;
+		try
+		{
+			$this->result = $this->stmt->fetch(PDO::FETCH_ASSOC);
+			return $this->result;
+		}
+		catch(PDOException $ex)
+		{
+			die('Could not retrieve from Sakila Database via PDO: ' . $ex->getMessage());
+		}
 	}
-	catch(PDOException $ex)
-	{
-		die('Could not retrieve from Sakila Database via PDO: ' . $ex->getMessage());
-	}
-}
 
 	public function updateActor($actorID,$first_name,$last_name)
-{
-	$updateStatement = "UPDATE actor";
-	$updateStatement .= " SET first_name = :firstName,last_name=:lastName";
-	$updateStatement .= " WHERE actor_id = :actorID;";
-
-	try
 	{
-		$this->stmt = $this->dbConnection->prepare($updateStatement);
-		$this->stmt->bindParam(':firstName', $first_name, PDO::PARAM_STR);
-		$this->stmt->bindParam(':lastName', $last_name, PDO::PARAM_STR);
-		$this->stmt->bindParam(':actor_ID', $actorID, PDO::PARAM_INT);
+		$updateStatement = "UPDATE actor";
+		$updateStatement .= " SET first_name = :firstName,last_name=:lastName";
+		$updateStatement .= " WHERE actor_id = :actorID;";
 
-		$this->stmt->execute();
+		try
+		{
+			$this->stmt = $this->dbConnection->prepare($updateStatement);
+			$this->stmt->bindParam(':firstName', $first_name, PDO::PARAM_STR);
+			$this->stmt->bindParam(':lastName', $last_name, PDO::PARAM_STR);
+			$this->stmt->bindParam(':actor_ID', $actorID, PDO::PARAM_INT);
 
-		return $this->stmt->rowCount();
+			$this->stmt->execute();
+
+			return $this->stmt->rowCount();
+		}
+		catch(PDOException $ex)
+		{
+			die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
+		}
 	}
-	catch(PDOException $ex)
-	{
-		die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
-	}
-}
 
 	public function createActor($first_name, $last_name)
 	{
@@ -136,26 +136,26 @@ class PDOMySQLSakila implements iActorDataModel
 
 
 	public function fetchActorID($row)
-{
-	return $row['actor_id'];
-}
+	{
+		return $row['actor_id'];
+	}
 
 	public function fetchActorFirstName($row)
-{
-	return $row['first_name'];
-}
+	{
+		return $row['first_name'];
+	}
 
 	public function fetchActorLastName($row)
-{
-	return $row['last_name'];
-}
+	{
+		return $row['last_name'];
+	}
 
 
 
 	public function fetchLastUpdate($row)
-{
-	return $row['last_update'];
-}
+	{
+		return $row['last_update'];
+	}
 
 }
 

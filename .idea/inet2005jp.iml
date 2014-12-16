@@ -8,9 +8,11 @@
       <library name="PHARS">
         <CLASSES>
           <root url="phar://$MODULE_DIR$/Lab8/composer.phar" />
+          <root url="phar://$MODULE_DIR$/Lab 8/composer.phar" />
         </CLASSES>
         <SOURCES>
           <root url="phar://$MODULE_DIR$/Lab8/composer.phar" />
+          <root url="phar://$MODULE_DIR$/Lab 8/composer.phar" />
         </SOURCES>
       </library>
     </orderEntry>
