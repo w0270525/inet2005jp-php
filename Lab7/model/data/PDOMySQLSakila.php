@@ -2,7 +2,7 @@
 
 require_once("iActorsDataModel.php");
 
-class PDOMySQLSakila implements iActorDataModel
+class PDOMySQLSakila implements iActorsDataModel
 {
 	private	$dbConnection;
 	private	$result;
@@ -94,7 +94,7 @@ class PDOMySQLSakila implements iActorDataModel
 			$this->stmt = $this->dbConnection->prepare($updateStatement);
 			$this->stmt->bindParam(':firstName', $first_name, PDO::PARAM_STR);
 			$this->stmt->bindParam(':lastName', $last_name, PDO::PARAM_STR);
-			$this->stmt->bindParam(':actor_ID', $actorID, PDO::PARAM_INT);
+			$this->stmt->bindParam(':actorID', $actorID, PDO::PARAM_INT);
 
 			$this->stmt->execute();
 
@@ -102,7 +102,7 @@ class PDOMySQLSakila implements iActorDataModel
 		}
 		catch(PDOException $ex)
 		{
-			die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
+			die('Could not update records from Sakila Database via PDO: ' . $ex->getMessage());
 		}
 	}
 

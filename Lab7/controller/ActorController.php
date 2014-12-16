@@ -25,7 +25,7 @@ class ActorController
         include '../view/editActor.php';
     }
 
-    public function commitUpdateAction($custID,$fName,$lName)
+    public function commitUpdateAction($actorID,$fName,$lName)
     {
         $lastOperationResults = "";
 
@@ -34,7 +34,7 @@ class ActorController
         $currentActor->setFirstName($fName);
         $currentActor->setLastName($lName);
 
-        $lastOperationResults = $this->model->updateCustomer($currentActor);
+        $lastOperationResults = $this->model->updateActor($currentActor);
 
         $arrayOfActors = $this->model->getAllActors();
 

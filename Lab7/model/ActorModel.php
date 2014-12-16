@@ -1,9 +1,6 @@
 <?php
 
 require_once '../model/Actor.php';
-require_once '../model/Address.php';
-
-//require_once '../model/data/MySQLiCustomerDataModel.php';
 require_once '../model/data/PDOMySQLSakila.php';
 
 class ActorModel
@@ -32,7 +29,7 @@ class ActorModel
         while($row =  $this->m_DataAccess->fetchActors())
         {
 
-            $currentActor = new Actor($this->m_DataAccess->fetchCustomerID($row),
+            $currentActor = new Actor($this->m_DataAccess->fetchActorID($row),
                     $this->m_DataAccess->fetchActorFirstName($row),
                     $this->m_DataAccess->fetchActorLastName($row),
 	                $this->m_DataAccess->fetchLastUpdate($row));
@@ -55,8 +52,8 @@ class ActorModel
         
 
          $fetchedActor = new Actor($this->m_DataAccess->fetchActorID($record),
-                 $this->m_DataAccess->fetchCustomerFirstName($record),
-                 $this->m_DataAccess->fetchCustomerLastName($record),
+                 $this->m_DataAccess->fetchActorFirstName($record),
+                 $this->m_DataAccess->fetchActorLastName($record),
                 $this->m_DataAccess->fetchLastUpdate($record));
             
             
@@ -74,7 +71,7 @@ class ActorModel
                 $actorToUpdate->getFirstName(),
                 $actorToUpdate->getLastName());
         
-        return "$recordsAffected record(s) updated succesfully!";
+        return "$recordsAffected record(s) updated successfully!";
     }
 }
 
