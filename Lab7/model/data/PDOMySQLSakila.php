@@ -1,18 +1,14 @@
 <?php
 
-require_once("iActorsDataModel.php")
+require_once("iActorsDataModel.php");
 
-class PDOMySQLSakila.php implements iActorDataModel
+class PDOMySQLSakila implements iActorDataModel
 {
-	private
-	$dbConnection;
-	private
-	$result;
-	private
-	$stmt;
+	private	$dbConnection;
+	private	$result;
+	private	$stmt;
 
-	public
-	function connectToDB()
+	public function connectToDB()
 	{
 // iActorDataAccess methods
 
@@ -23,9 +19,6 @@ class PDOMySQLSakila.php implements iActorDataModel
 			die('Could not connect to the Sakila Database via PDO: ' . $ex->getMessage());
 		}
 
-
-
-
 	}
 
 	public function closeDB() {
@@ -34,14 +27,13 @@ class PDOMySQLSakila.php implements iActorDataModel
 }
 
 
-	public function selectCustomers()
+	public function selectActors()
 {
 	// hard-coding for first ten rows
 	$start = 0;
 	$count = 10;
 
-	$selectStatement = "SELECT * FROM customer";
-	$selectStatement .= " LEFT JOIN address ON customer.address_id = address.address_id";
+	$selectStatement = "SELECT * FROM sakila.actor";
 	$selectStatement .= " LIMIT :start,:count;";
 
 	try
@@ -59,16 +51,15 @@ class PDOMySQLSakila.php implements iActorDataModel
 
 }
 
-	public function selectCustomerById($custID)
+	public function selectActorById($actorID)
 {
-	$selectStatement = "SELECT * FROM customer";
-	$selectStatement .= " LEFT JOIN address ON customer.address_id = address.address_id";
-	$selectStatement .= " WHERE customer.customer_id = :custID;";
+	$selectStatement = "SELECT * FROM sakila.actor WHERE actor_id = :actorID;";
+	$selectStatement .= " ";
 
 	try
 	{
 		$this->stmt = $this->dbConnection->prepare($selectStatement);
-		$this->stmt->bindParam(':custID', $custID, PDO::PARAM_INT);
+		$this->stmt->bindParam(':actorID', $actorID, PDO::PARAM_INT);
 
 		$this->stmt->execute();
 	}
@@ -79,7 +70,7 @@ class PDOMySQLSakila.php implements iActorDataModel
 }
 
 
-	public function fetchCustomers()
+	public function fetchActors()
 {
 	try
 	{
@@ -92,18 +83,18 @@ class PDOMySQLSakila.php implements iActorDataModel
 	}
 }
 
-	public function updateCustomer($custID,$first_name,$last_name)
+	public function updateActor($actorID,$first_name,$last_name)
 {
 	$updateStatement = "UPDATE actor";
 	$updateStatement .= " SET first_name = :firstName,last_name=:lastName";
-	$updateStatement .= " WHERE actor_id = :custID;";
+	$updateStatement .= " WHERE actor_id = :actorID;";
 
 	try
 	{
 		$this->stmt = $this->dbConnection->prepare($updateStatement);
 		$this->stmt->bindParam(':firstName', $first_name, PDO::PARAM_STR);
 		$this->stmt->bindParam(':lastName', $last_name, PDO::PARAM_STR);
-		$this->stmt->bindParam(':custID', $custID, PDO::PARAM_INT);
+		$this->stmt->bindParam(':actor_ID', $actorID, PDO::PARAM_INT);
 
 		$this->stmt->execute();
 
@@ -114,6 +105,35 @@ class PDOMySQLSakila.php implements iActorDataModel
 		die('Could not select records from Sakila Database via PDO: ' . $ex->getMessage());
 	}
 }
+
+	public function createActor($first_name, $last_name)
+	{
+		$insertStatement = "INSERT INTO actor (first_name, last_name) VALUES (".$first_name.", ".$last_name.")";
+		$this->stmt= $this->dbConnection->prepare($insertStatement);
+		$this->stmt->bindParam(':firstName', $first_name, PDO::PARAM_STR);
+		$this->stmt->bindParam(':lastName', $last_name, PDO::PARAM_STR);
+
+		$this->stmt->execute();
+
+		return $this->stmt->rowCount();
+	}
+
+	public function deleteActor($actorID) {
+
+		$deleteStatement = "DELETE FROM actor WHERE actor_id=".$actorID.";";
+
+		try {
+			$this->stmt = $this->dbConnection->prepare($deleteStatement);
+			$this->stmt->execute();
+			return $this->stmt->rowCount();
+		} catch (PDOException $e) {
+			die('Could not delete actor record where row count = '.$actorID);
+		}
+
+
+	}
+
+
 
 	public function fetchActorID($row)
 {
@@ -131,32 +151,12 @@ class PDOMySQLSakila.php implements iActorDataModel
 }
 
 
-	public function fetchAddressID($row)
-{
-	return $row['address_id'];
-}
 
-	public function fetchAddress1($row)
-{
-	return $row['address'];
-}
-
-	public function fetchAddress2($row)
-{
-	return $row['address2'];
-
-}
 	public function fetchLastUpdate($row)
 {
 	return $row['last_update'];
 }
 
 }
-
-
-
-
-
-
 
 ?>
