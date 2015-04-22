@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<photos>
+	<photo id="0">
+		<description>a red castle.</description>
+		<title>RedCastle</title>
+		<path>images/RedCastle.jpg</path>
+		<uploader>jon</uploader>
+
+
+	</photo>
+	<photo id="1">
+		<description>Snow Country.</description>
+		<title>SnowCountry</title>
+		<path>images/SnowCountry.jpg</path>
+		<uploader>jon</uploader>
+
+	</photo>
+	<photo id="2">
+		<description>Snowy Field.</description>
+		<title>SnowField</title>
+		<path>images/SnowField.jpg</path>
+		<uploader>jon</uploader>
+
+	</photo>
+	<photo id="3">
+		<description>A Tree</description>
+		<title>Tree</title>
+		<path>images/Tree.jpg</path>
+		<uploader>jon</uploader>
+
+	</photo>
+	<photo id="4">
+		<description>A lake in winter.</description>
+		<title>WinterLake</title>
+		<path>images/WinterLake.jpg</path>
+		<uploader>jon</uploader>
+
+	</photo>
+</photos>
+
